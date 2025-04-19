@@ -1,1 +1,293 @@
-
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Τέχνες και Γράμματα - 1ο Γυμνάσιο Πυλαίας</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Comfortaa', cursive;
+            background-color: black;
+            color: gold;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid gold;
+            padding-bottom: 20px;
+        }
+        
+        h1, h2 {
+            color: gold;
+            margin-top: 0;
+        }
+        
+        .quiz-section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+        }
+        
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #111;
+        }
+        
+        .options {
+            margin-top: 10px;
+        }
+        
+        .option {
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .option:hover {
+            background-color: #333;
+        }
+        
+        .option.selected {
+            font-weight: bold;
+        }
+        
+        .correct {
+            background-color: #006400 !important;
+            color: white;
+        }
+        
+        .incorrect {
+            background-color: #8B0000 !important;
+            color: white;
+        }
+        
+        .disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        
+        .score-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #222;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid gold;
+            text-align: center;
+        }
+        
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>1ο Γυμνάσιο Πυλαίας</h1>
+            <h2>Επανάληψη της Ιστορίας Α' Γυμνασίου</h2>
+            <h3>Ερωτήσεις Πολλαπλής Επιλογής<br>Οι τέχνες και τα γράμματα στην Κλασική Εποχή</h3>
+        </header>
+        
+        <div class="score-container">
+            <div>Σκορ:</div>
+            <div class="score">0/10</div>
+        </div>
+        
+        <div class="quiz-section">
+            <h2>1. Ιστορία και Φιλοσοφία</h2>
+            
+            <div class="question" id="q1">
+                <div>1. Ποιος θεωρείται ο θεμελιωτής της επιστημονικής ιστορικής έρευνας;</div>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer(1, 'α')">α) Ηρόδοτος</div>
+                    <div class="option" onclick="checkAnswer(1, 'β')">β) Θουκυδίδης</div>
+                    <div class="option" onclick="checkAnswer(1, 'γ')">γ) Ξενοφών</div>
+                </div>
+            </div>
+            
+            <div class="question" id="q2">
+                <div>2. Ποιος φιλόσοφος έθεσε τα θεμέλια για πολλές επιστήμες εκτός από τη φιλοσοφία;</div>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer(2, 'α')">α) Πλάτωνας</div>
+                    <div class="option" onclick="checkAnswer(2, 'β')">β) Σωκράτης</div>
+                    <div class="option" onclick="checkAnswer(2, 'γ')">γ) Αριστοτέλης</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="quiz-section">
+            <h2>2. Ιατρική και Ρητορική</h2>
+            
+            <div class="question" id="q3">
+                <div>3. Ποιος ίδρυσε την πρώτη μεγάλη ιατρική σχολή στην Ελλάδα;</div>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer(3, 'α')">α) Ιπποκράτης</div>
+                    <div class="option" onclick="checkAnswer(3, 'β')">β) Αριστοτέλης</div>
+                    <div class="option" onclick="checkAnswer(3, 'γ')">γ) Πλάτωνας</div>
+                </div>
+            </div>
+            
+            <div class="question" id="q4">
+                <div>4. Ποιος ρήτορας του 4ου αιώνα π.Χ. υπερασπίστηκε την ανεξαρτησία της Αθήνας με πύρινους λόγους;</div>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer(4, 'α')">α) Ισοκράτης</div>
+                    <div class="option" onclick="checkAnswer(4, 'β')">β) Δημοσθένης</div>
+                    <div class="option" onclick="checkAnswer(4, 'γ')">γ) Ισαίος</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="quiz-section">
+            <h2>3. Θέατρο</h2>
+            
+            <div class="question" id="q5">
+                <div>5. Ποιος τραγικός ποιητής παρουσίαζε τους ανθρώπους όπως πραγματικά ήταν;</div>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer(5, 'α')">α) Αισχύλος</div>
+                    <div class="option" onclick="checkAnswer(5, 'β')">β) Σοφοκλής</div>
+                    <div class="option" onclick="checkAnswer(5, 'γ')">γ) Ευριπίδης</div>
+                </div>
+            </div>
+            
+            <div class="question" id="q6">
+                <div>6. Ποιος είναι ο πιο γνωστός κωμικός ποιητής της αρχαιότητας;</div>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer(6, 'α')">α) Μένανδρος</div>
+                    <div class="option" onclick="checkAnswer(6, 'β')">β) Αριστοφάνης</div>
+                    <div class="option" onclick="checkAnswer(6, 'γ')">γ) Φρύνιχος</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="quiz-section">
+            <h2>4. Αρχιτεκτονική</h2>
+            
+            <div class="question" id="q7">
+                <div>7. Ποιος ναός συνδύαζε δωρικά και ιωνικά στοιχεία και είναι σύμβολο της Αθηναϊκής Δημοκρατίας;</div>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer(7, 'α')">α) Παρθενώνας</div>
+                    <div class="option" onclick="checkAnswer(7, 'β')">β) Ερέχθειο</div>
+                    <div class="option" onclick="checkAnswer(7, 'γ')">γ) Θόλος Επιδαύρου</div>
+                </div>
+            </div>
+            
+            <div class="question" id="q8">
+                <div>8. Ποιο είναι το γνωστότερο αρχαίο θέατρο που διατηρείται ως σήμερα;</div>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer(8, 'α')">α) Θέατρο Διονύσου</div>
+                    <div class="option" onclick="checkAnswer(8, 'β')">β) Θέατρο Επιδαύρου</div>
+                    <div class="option" onclick="checkAnswer(8, 'γ')">γ) Θέατρο Δελφών</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="quiz-section">
+            <h2>5. Γλυπτική και Ζωγραφική</h2>
+            
+            <div class="question" id="q9">
+                <div>9. Με ποια υλικά κατασκευάζονταν τα χρυσελεφάντινα αγάλματα;</div>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer(9, 'α')">α) Πηλό και χρυσό</div>
+                    <div class="option" onclick="checkAnswer(9, 'β')">β) Ελεφαντοστό και χρυσό</div>
+                    <div class="option" onclick="checkAnswer(9, 'γ')">γ) Ορείχαλκο και ασήμι</div>
+                </div>
+            </div>
+            
+            <div class="question" id="q10">
+                <div>10. Ποιος γλύπτης φιλοτέχνησε τον Δία της Ολυμπίας και την Αθηνά Παρθένο;</div>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer(10, 'α')">α) Πολύκλειτος</div>
+                    <div class="option" onclick="checkAnswer(10, 'β')">β) Πραξιτέλης</div>
+                    <div class="option" onclick="checkAnswer(10, 'γ')">γ) Φειδίας</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Δημιουργία/Επιμέλεια: Παναγιώτης Δόμβρος (CC BY-NC)<br>
+            Διευθυντής 1ου Γυμνασίου Πυλαίας
+        </div>
+    </div>
+    
+    <script>
+        // Correct answers based on the document
+        const correctAnswers = {
+            1: 'β',
+            2: 'γ',
+            3: 'α',
+            4: 'β',
+            5: 'γ',
+            6: 'β',
+            7: 'α',
+            8: 'β',
+            9: 'β',
+            10: 'γ'
+        };
+        
+        let score = 0;
+        const answeredQuestions = new Set();
+        
+        function checkAnswer(questionNumber, selectedOption) {
+            if (answeredQuestions.has(questionNumber)) return;
+            
+            const questionElement = document.getElementById(`q${questionNumber}`);
+            const options = questionElement.querySelectorAll('.option');
+            
+            // Mark all options as disabled
+            options.forEach(option => {
+                option.classList.add('disabled');
+            });
+            
+            // Mark the selected option
+            const selectedElement = questionElement.querySelector(`.option[onclick="checkAnswer(${questionNumber}, '${selectedOption}')"]`);
+            selectedElement.classList.add('selected');
+            
+            if (selectedOption === correctAnswers[questionNumber]) {
+                // Correct answer
+                selectedElement.classList.add('correct');
+                score++;
+                updateScore();
+            } else {
+                // Incorrect answer
+                selectedElement.classList.add('incorrect');
+                
+                // Highlight the correct answer
+                const correctElement = questionElement.querySelector(`.option[onclick="checkAnswer(${questionNumber}, '${correctAnswers[questionNumber]}')"]`);
+                correctElement.classList.add('correct');
+            }
+            
+            answeredQuestions.add(questionNumber);
+        }
+        
+        function updateScore() {
+            document.querySelector('.score').textContent = `${score}/10`;
+        }
+    </script>
+</body>
+</html>
